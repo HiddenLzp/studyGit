@@ -3,7 +3,6 @@ springBoot
 springCloud
 springMvc
 mybatis
-dubbo
 docker
 jquery
 html
