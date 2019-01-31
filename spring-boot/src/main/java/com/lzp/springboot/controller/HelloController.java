@@ -1,13 +1,11 @@
 package com.lzp.springboot.controller;
 
+import com.lzp.springboot.pojo.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @authorHmLzp
@@ -17,7 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "测试接口-API")
 public class HelloController {
 
-    @GetMapping("/hello")
+    //@GetMapping("/hello")
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
     @ApiOperation("hello的测试接口")
     @ApiImplicitParam(name = "name",value = "姓名",required = true,dataType = "String")
     public String index(@RequestParam(required = true) final String name){
@@ -34,5 +33,15 @@ public class HelloController {
             ,@RequestParam(required = true) final Integer b){
         int sum = a + b;
         return "a + b = " + sum ;
+    }
+
+    @GetMapping("/getUser")
+    @ApiOperation("getUser的测试接口")
+    public User getUser(){
+        User user = new User();
+        user.setId(1);
+        user.setAddress("北京");
+        user.setUsername("李泽平");
+        return user;
     }
 }

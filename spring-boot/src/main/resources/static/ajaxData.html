@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示信息</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>birthday</th>
+        <th>sex</th>
+        <th>address</th>
+    </tr>
+    <tbody id="data">
+
+    </tbody>
+</table>
+
+<script src="./js/jquery-1.8.3.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $.ajax("/helloUses",{
+            success: function (data) {
+                console.log(data);
+                var html = "";
+                for (var i = 0; i < data.length ; i++) {
+                    html += "<tr>\n" +
+                            "<th>"+data[i].id+"</th>"+
+                        "            <th>"+data[i].username+"</th>\n" +
+                        "            <th>"+data[i].birthday+"</th>\n" +
+                        "            <th>"+data[i].sex+"</th>\n" +
+                        "            <th>"+data[i].address+"</th>\n" +
+                        "        </tr>";
+                }
+                $("#data").html(html);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
+    })
+</script>
+</body>
+</html>
