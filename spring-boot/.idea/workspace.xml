@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74f5bd65-962f-44a6-9eb8-b4112d69dc43" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson__2_7_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testJackson/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testJackson/jacksonTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testSwing/TestLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testSwing/TestOne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot.iml" afterDir="false" />
-    </list>
+    <list default="true" id="74f5bd65-962f-44a6-9eb8-b4112d69dc43" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/lzp/springboot/testJackson/jacksonTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+            <state relative-caret-position="377">
+              <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,8 +89,8 @@
         <option value="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testSwing/TestOne.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testSwing/TestLogin.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testJackson/jacksonTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testJackson/User.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/lzp/springboot/testJackson/jacksonTest.java" />
       </list>
     </option>
   </component>
@@ -313,7 +304,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549869047925" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549869154390" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
@@ -450,15 +441,15 @@
       <workItem from="1548857474780" duration="3837000" />
       <workItem from="1548928822639" duration="4028000" />
       <workItem from="1549805685773" duration="2938000" />
-      <workItem from="1549850897602" duration="3509000" />
+      <workItem from="1549850897602" duration="3883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26897000" />
+    <option name="totallyTimeSpent" value="27271000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="622" y="81" width="1379" height="931" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Capture Tool" order="0" />
@@ -467,7 +458,7 @@
       <window_info id="Image Layers" order="3" />
       <window_info id="Web" order="4" sideWeight="0.50711745" side_tool="true" weight="0.14814815" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49288255" visible="true" weight="0.23426838" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49288255" visible="true" weight="0.16471216" />
       <window_info id="Structure" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Application Servers" order="1" />
@@ -478,7 +469,7 @@
       <window_info anchor="bottom" id="Terminal" order="6" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" />
-      <window_info anchor="bottom" id="Run" order="9" weight="0.3027167" />
+      <window_info anchor="bottom" id="Run" order="9" visible="true" weight="0.30178174" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4152652" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
@@ -497,7 +488,7 @@
       <window_info anchor="right" id="Commander" order="9" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="10" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="11" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="12" weight="0.32995737" />
+      <window_info anchor="right" id="Maven" order="12" visible="true" weight="0.32995737" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -683,8 +674,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/lzp/springboot/testJackson/jacksonTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state relative-caret-position="377">
+          <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
