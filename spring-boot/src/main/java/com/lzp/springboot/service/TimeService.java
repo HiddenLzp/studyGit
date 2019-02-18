@@ -5,16 +5,25 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
+
 /**
  * 时间Service
  *
  * @authorHmLzp
  * @create 2019 - 02 - 17 22:36
  */
-public class TimeService {
+public interface TimeService {
 
-    @Autowired
-    private DateTime dateTime;
+    public String getCurrentTime();                     //获取当前时间
+
+    public Integer diffDay(String begin,String end);    //时间区间
+
+    public Integer diffDay(Date begin, Date end);       //时间区间
+
+    public Integer cutDownNewYear();                    //当前时间距离新年天数
+
+    public String addDays(Integer days);                //days 天 之后的时间
 
     public static void main(String[] args) {
         //输出当前时间 2019-02-17T22:39:24.023+08:00

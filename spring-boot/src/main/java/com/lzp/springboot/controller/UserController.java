@@ -19,6 +19,7 @@ import java.util.List;
  * @create 2019 - 01 - 30 10:10
  */
 @RestController
+@RequestMapping("user")
 @Api(tags = "获取用户信息")
 public class UserController {
 
