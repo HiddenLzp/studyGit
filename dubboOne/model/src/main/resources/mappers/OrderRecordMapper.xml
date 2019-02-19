@@ -2,152 +2,244 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lzp.dubbo.one.model.mapper.ItemInfoMapper">
-
-    <select id="getItemInfoById" resultType="com.lzp.dubbo.one.model.entity.ItemInfo" >
+<mapper namespace="com.lzp.dubbo.one.model.mapper.OrderRecordMapper">
+    <resultMap id="BaseResultMap" type="com.lzp.dubbo.one.model.entity.OrderRecord">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="item_id" jdbcType="INTEGER" property="itemId" />
+        <result column="total" jdbcType="INTEGER" property="total" />
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+        <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+        <result column="is_active" jdbcType="INTEGER" property="isActive" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, item_id, total, customer_name, order_time, is_active, update_time
+  </sql>
+    <select id="selectByExample" parameterType="com.lzp.dubbo.one.model.entity.OrderRecordExample" resultMap="BaseResultMap">
         select
-                id as id,
-                code as code,
-                name as name,
-                price as price,
-                is_active as isActive,
-                create_time as createTime,
-                update_time as updateTime
-        from item_info
-        <trim prefix="where" prefixOverrides="and | or">
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from order_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from order_record
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.lzp.dubbo.one.model.entity.OrderRecordExample">
+        delete from order_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.lzp.dubbo.one.model.entity.OrderRecord">
+    insert into order_record (id, item_id, total,
+      customer_name, order_time, is_active,
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{total,jdbcType=INTEGER},
+      #{customerName,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, #{isActive,jdbcType=INTEGER},
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="com.lzp.dubbo.one.model.entity.OrderRecord">
+        insert into order_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
-                and id=#{id}
+                id,
+            </if>
+            <if test="itemId != null">
+                item_id,
+            </if>
+            <if test="total != null">
+                total,
+            </if>
+            <if test="customerName != null">
+                customer_name,
+            </if>
+            <if test="orderTime != null">
+                order_time,
+            </if>
+            <if test="isActive != null">
+                is_active,
+            </if>
+            <if test="updateTime != null">
+                update_time,
             </if>
         </trim>
-    </select>
-
-    <select id="getItemInfoListByMap" resultType="com.lzp.dubbo.one.model.entity.ItemInfo" parameterType="java.util.Map">
-        select
-                id as id,
-                code as code,
-                name as name,
-                price as price,
-                is_active as isActive,
-                create_time as createTime,
-                update_time as updateTime
-        from item_info
-        <trim prefix="where" prefixOverrides="and | or">
-                    <if test="id != null and id!=''">
-                        and id=#{id}
-                    </if>
-                    <if test="code != null and code!=''">
-                        and code=#{code}
-                    </if>
-                    <if test="name != null and name!=''">
-                        and name=#{name}
-                    </if>
-                    <if test="price != null and price!=''">
-                        and price=#{price}
-                    </if>
-                    <if test="isActive != null and isActive!=''">
-                        and is_active=#{isActive}
-                    </if>
-                    <if test="createTime != null and createTime!=''">
-                        and create_time=#{createTime}
-                    </if>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="itemId != null">
+                #{itemId,jdbcType=INTEGER},
+            </if>
+            <if test="total != null">
+                #{total,jdbcType=INTEGER},
+            </if>
+            <if test="customerName != null">
+                #{customerName,jdbcType=VARCHAR},
+            </if>
+            <if test="orderTime != null">
+                #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isActive != null">
+                #{isActive,jdbcType=INTEGER},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
         </trim>
-         order by creationDate desc
-        <if test="beginPos != null and beginPos!='' and pageSize != null  and pageSize !='' ">
-            limit #{beginPos},#{pageSize}
-        </if>
-    </select>
-
-    <select id="getItemInfoCountByMap" resultType="Integer"  parameterType="java.util.Map">
-        select count(*) from item_info
-        <trim prefix="where" prefixOverrides="and | or">
-                <if test="id != null and id!=''">
-                    and id=#{id}
-                </if>
-                <if test="code != null and code!=''">
-                    and code=#{code}
-                </if>
-                <if test="name != null and name!=''">
-                    and name=#{name}
-                </if>
-                <if test="price != null and price!=''">
-                    and price=#{price}
-                </if>
-                <if test="isActive != null and isActive!=''">
-                    and is_active=#{isActive}
-                </if>
-                <if test="createTime != null and createTime!=''">
-                    and create_time=#{createTime}
-                </if>
-                <if test="updateTime != null and updateTime!=''">
-                    and update_time=#{updateTime}
-                </if>
-        </trim>
-    </select>
-
-    <insert id="insertItemInfo" parameterType="com.lzp.dubbo.one.model.entity.ItemInfo">
-        insert into item_info(
-                        code,
-                        name,
-                        price,
-                        is_active,
-                        create_time,
-                        update_time)
-        values(
-                     #{code},
-                     #{name},
-                     #{price},
-                     #{isActive},
-                     #{createTime},
-                    #{updateTime})
     </insert>
-
-    <update id="updateItemInfo" parameterType="com.lzp.dubbo.one.model.entity.ItemInfo">
-        update item_info
-        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
-                    <if test="id != null and id!=''">
-                        id=#{id},
-                    </if>
-                    <if test="code != null and code!=''">
-                        code=#{code},
-                    </if>
-                    <if test="name != null and name!=''">
-                        name=#{name},
-                    </if>
-                    <if test="price != null and price!=''">
-                        price=#{price},
-                    </if>
-                    <if test="isActive != null and isActive!=''">
-                        is_active=#{isActive},
-                    </if>
-                    <if test="createTime != null and createTime!=''">
-                        create_time=#{createTime},
-                    </if>
-                    <if test="updateTime != null and updateTime!=''">
-                        update_time=#{updateTime}
-                    </if>
-        </trim>
-    </update>
-
-    <delete id="deleteItemInfoById" parameterType="Long">
-        delete from item_info where id = #{id}
-    </delete>
-
-    <select id="selectAll" resultType="com.lzp.dubbo.one.model.entity.ItemInfo">
-        SELECT *
-        FROM item_info
-        WHERE is_active = 1
-        ORDER BY create_time DESC
-    </select>
-
-    <select id="selectByParams" resultType="com.lzp.dubbo.one.model.entity.ItemInfo">
-        SELECT *
-        FROM item_info
-        WHERE is_active=1
-        <if test="search!=null and search!=''">
-            and name like CONCAT('%','${search}','%')
+    <select id="countByExample" parameterType="com.lzp.dubbo.one.model.entity.OrderRecordExample" resultType="java.lang.Long">
+        select count(*) from order_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
         </if>
-
-        and DATE_FORMAT(create_time,'%Y-%m-%d') = '2019-01-13'
-        ORDER BY create_time DESC
     </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update order_record
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.itemId != null">
+                item_id = #{record.itemId,jdbcType=INTEGER},
+            </if>
+            <if test="record.total != null">
+                total = #{record.total,jdbcType=INTEGER},
+            </if>
+            <if test="record.customerName != null">
+                customer_name = #{record.customerName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.orderTime != null">
+                order_time = #{record.orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.isActive != null">
+                is_active = #{record.isActive,jdbcType=INTEGER},
+            </if>
+            <if test="record.updateTime != null">
+                update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update order_record
+        set id = #{record.id,jdbcType=INTEGER},
+        item_id = #{record.itemId,jdbcType=INTEGER},
+        total = #{record.total,jdbcType=INTEGER},
+        customer_name = #{record.customerName,jdbcType=VARCHAR},
+        order_time = #{record.orderTime,jdbcType=TIMESTAMP},
+        is_active = #{record.isActive,jdbcType=INTEGER},
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lzp.dubbo.one.model.entity.OrderRecord">
+        update order_record
+        <set>
+            <if test="itemId != null">
+                item_id = #{itemId,jdbcType=INTEGER},
+            </if>
+            <if test="total != null">
+                total = #{total,jdbcType=INTEGER},
+            </if>
+            <if test="customerName != null">
+                customer_name = #{customerName,jdbcType=VARCHAR},
+            </if>
+            <if test="orderTime != null">
+                order_time = #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isActive != null">
+                is_active = #{isActive,jdbcType=INTEGER},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lzp.dubbo.one.model.entity.OrderRecord">
+         update order_record
+            set item_id = #{itemId,jdbcType=INTEGER},
+              total = #{total,jdbcType=INTEGER},
+              customer_name = #{customerName,jdbcType=VARCHAR},
+              order_time = #{orderTime,jdbcType=TIMESTAMP},
+              is_active = #{isActive,jdbcType=INTEGER},
+              update_time = #{updateTime,jdbcType=TIMESTAMP}
+            where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

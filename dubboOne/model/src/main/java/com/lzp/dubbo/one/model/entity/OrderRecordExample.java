@@ -1,4 +1,4 @@
-package com.lzp.pojo;
+package com.lzp.dubbo.one.model.entity;
 
 import java.util.ArrayList;
 import java.util.Date;

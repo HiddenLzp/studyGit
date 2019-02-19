@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface ItemInfoMapper {
 
-	public ItemInfo getItemInfoById(@Param(value = "id") Long id)throws Exception;
+	public ItemInfo getItemInfoById(@Param(value = "id") Integer id)throws Exception;
 
 	public List<ItemInfo> getItemInfoListByMap(Map<String, Object> param)throws Exception;
 
@@ -21,6 +21,6 @@ public interface ItemInfoMapper {
 	/*查询列表*/
 	public List<ItemInfo> selectAll();
 
-	public List<ItemInfo> selectByPage();
+	public List<ItemInfo> selectByParams(@Param("search") String search);
 
 }

@@ -9,5 +9,7 @@ import com.lzp.dubbo.one.api.response.BaseResponse;
 public interface IDubboItemService {
     BaseResponse listItems();
 
-    BaseResponse listPageItems();
+    BaseResponse listPageItems(Integer pageNum,Integer pageSize);
+
+    BaseResponse listPageItemsParams(Integer pageNum,Integer pageSize,String search);
 }

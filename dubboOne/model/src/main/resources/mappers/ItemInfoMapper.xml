@@ -138,4 +138,16 @@
         WHERE is_active = 1
         ORDER BY create_time DESC
     </select>
+
+    <select id="selectByParams" resultType="com.lzp.dubbo.one.model.entity.ItemInfo">
+        SELECT *
+        FROM item_info
+        WHERE is_active=1
+        <if test="search!=null and search!=''">
+            and name like CONCAT('%','${search}','%')
+        </if>
+
+        and DATE_FORMAT(create_time,'%Y-%m-%d') = '2019-01-13'
+        ORDER BY create_time DESC
+    </select>
 </mapper>

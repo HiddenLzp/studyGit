@@ -3,7 +3,8 @@ package com.lzp.dubbo.one.api.enums;
 public enum StatusCode {
     Success(0,"成功"),
     Fail(-1,"失败"),
-    InvalidParams(200,"无效的参数");
+    InvalidParams(200,"无效的参数"),
+    ItemNotExit(201,"商品不存在");
 
     private Integer code;
     private String msg;

@@ -1,6 +1,8 @@
 package com.lzp.dubbo.one.server.service.dubbo;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lzp.dubbo.one.api.enums.StatusCode;
 import com.lzp.dubbo.one.api.response.BaseResponse;
 import com.lzp.dubbo.one.api.service.IDubboItemService;
@@ -11,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import java.util.List;
 
 /**
@@ -50,8 +53,36 @@ public class IDubboItemServiceImpl implements IDubboItemService {
      */
     @Override
     @Path("item/page/list")
-    public BaseResponse listPageItems() {
+    public BaseResponse listPageItems(@QueryParam("pageNum") Integer pageNum,
+                                      @QueryParam("pageSize") Integer pageSize) {
         BaseResponse baseResponse = new BaseResponse(StatusCode.Success);
+        try{
+            //TODO: 分页组件
+            PageHelper.startPage(pageNum,pageSize);
+            PageInfo<ItemInfo> itemInfoPageInfo = new PageInfo<>(itemInfoMapper.selectAll());
+            baseResponse.setData(itemInfoPageInfo);
+        }catch (Exception e) {
+            log.error("列表查询-分页查询服务-实际的业务实现逻辑-发生异常：",e.fillInStackTrace());
+            baseResponse = new BaseResponse(StatusCode.Fail);
+        }
+        return baseResponse;
+    }
+
+    @Override
+    @Path("item/page/list/param")
+    public BaseResponse listPageItemsParams(@QueryParam("pageNum") Integer pageNum,
+                                      @QueryParam("pageSize") Integer pageSize,
+                                      @QueryParam("search") String search) {
+        BaseResponse baseResponse = new BaseResponse(StatusCode.Success);
+        try{
+            //TODO: 分页组件
+            PageHelper.startPage(pageNum,pageSize);
+            PageInfo<ItemInfo> itemInfoPageInfo = new PageInfo<>(itemInfoMapper.selectByParams(search));
+            baseResponse.setData(itemInfoPageInfo);
+        }catch (Exception e) {
+            log.error("列表查询-分页查询服务-实际的业务实现逻辑-发生异常：",e.fillInStackTrace());
+            baseResponse = new BaseResponse(StatusCode.Fail);
+        }
         return baseResponse;
     }
 }

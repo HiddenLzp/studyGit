@@ -2,11 +2,13 @@ package com.lzp.dubbo.one.api.response;
 
 import com.lzp.dubbo.one.api.enums.StatusCode;
 
+import java.io.Serializable;
+
 /**
  * @authorHmLzp
  * @create 2019 - 02 - 15 10:59
  */
-public class BaseResponse<T> {
+public class BaseResponse<T> implements Serializable {
 
     private Integer code;
     private String msg;
